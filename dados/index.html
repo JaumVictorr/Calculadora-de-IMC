@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+    <h1>Calculadora de IMC:</h1>
+    <div class="container">
+        <label for="inputPeso">Informe seu Peso: </label>
+        <input type="text" id="inputPeso">
+        <label for="inputAltura">Informe sua Altura: </label>
+        <input type="text" id="inputAltura">
+        <button id="botaoCalcular" type="button">Calcular</button>
+        <h2>Resultado: </h2>
+        <p id="resultado"></p>
+        <p id="classe"></p>
+    </div>
+
+    <script>
+
+        function calculoIMC() {
+            var classe = document.getElementById("classe")
+            var inputPeso = parseFloat(document.getElementById("inputPeso").value)  
+            var inputAltura = parseFloat(document.getElementById("inputAltura").value)  
+            var calculo = inputPeso / (inputAltura * 2)
+            var resultado = document.getElementById("resultado")
+
+            if (calculo < 18.5) {
+                classe.textContent = "Abaixo do peso";
+            } else if (calculo >= 18.5 && calculo < 24.9) {
+                classe.textContent = "Peso normal";
+            } else if (calculo >= 25 && calculo < 29.9) {
+                classe.textContent = "Sobrepeso";
+            } else {
+                classe.textContent = "Obesidade";
+            }
+            resultado.textContent = "Seu IMC é: " + calculo.toFixed(2);
+
+        }
+        
+
+        var botao = document.getElementById("botaoCalcular")
+        botao.addEventListener('click', calculoIMC)
+
+    </script>
+
+</body>
+
+</html>
